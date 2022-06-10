@@ -26,7 +26,9 @@ class CharacterRepository @Inject constructor(
             .suspendOnSuccess {
                 emit(data)
             }
-            .onFailure { onError(message()) }
+            .onFailure {
+                onError(message())
+            }
     }.onStart { onStart() }.onCompletion { onCompletion() }.flowOn(Dispatchers.IO)
 
 }

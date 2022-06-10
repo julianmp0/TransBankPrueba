@@ -4,8 +4,11 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import com.imagemaker.transbank.model.models.CharacterModel
 import com.imagemaker.transbank.model.repository.CharacterRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import timber.log.Timber
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 @HiltViewModel
@@ -16,7 +19,7 @@ class MainViewModel @Inject constructor(
     private val _isLoading: MutableState<Boolean> = mutableStateOf(false)
     val isLoading: State<Boolean> get() = _isLoading
 
-    val sss = characterRepository.loadRickAndMortyCharacters(
+    val characterList:Flow<CharacterModel> = characterRepository.loadRickAndMortyCharacters(
         onStart = {
             _isLoading.value = true
         },
@@ -24,8 +27,7 @@ class MainViewModel @Inject constructor(
             _isLoading.value = false
         },
         onError = {
-
+            Timber.e(it)
         }
     )
-
 }
