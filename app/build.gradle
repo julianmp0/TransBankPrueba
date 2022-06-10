@@ -63,6 +63,8 @@ android {
             dimension = "version"
             applicationIdSuffix = ".dev"
             versionNameSuffix = "-dev"
+
+            buildConfigField "String", "URL_RICK_AND_MORTY_API", "\"https://rickandmortyapi.com/api/\""
         }
         create("prod") {
             dimension = "version"
