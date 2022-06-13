@@ -41,6 +41,12 @@ ext.versions = [
     timberVersion        : '5.0.1',
 
     // pagination
-    pagingCompose        : '1.0.0-alpha15'
+    pagingCompose        : '1.0.0-alpha15',
 
+        //AppCompat
+    appcompatVersion : '1.4.2',
+    constraintlayoutVersion: '2.1.4',
+
+        //
+    kotlinxSerializationJsonVersion : '1.2.2'
 ]

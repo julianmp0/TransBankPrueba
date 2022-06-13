@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'kotlinx-serialization'
 }
 
 apply from: '../dependencies.gradle'
@@ -124,4 +125,11 @@ dependencies {
 
     // Paging
     implementation "androidx.paging:paging-compose:$versions.pagingCompose"
+
+    // AppCompat
+    implementation "androidx.appcompat:appcompat:$versions.appcompatVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$versions.constraintlayoutVersion"
+
+    // Serialization
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:$versions.kotlinxSerializationJsonVersion"
 }
