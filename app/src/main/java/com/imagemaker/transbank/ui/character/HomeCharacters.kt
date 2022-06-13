@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -27,7 +28,8 @@ import com.skydoves.landscapist.coil.CoilImage
 @Composable
 fun HomeCharacters(
     modifier: Modifier,
-    charactersPagingData: LazyPagingItems<Result>
+    charactersPagingData: LazyPagingItems<Result>,
+    onClickCharacter: (character: Result) -> Unit
 ) {
 
     LazyColumn(
@@ -36,22 +38,28 @@ fun HomeCharacters(
     ) {
         items(charactersPagingData){ character ->
             character?.let {
-                CharacterItem(it)
+                CharacterItem(
+                    character = it,
+                    onClickCharacter = onClickCharacter)
             }
         }
     }
 
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun CharacterItem(character: Result) {
+fun CharacterItem(character: Result, onClickCharacter: (character: Result) -> Unit?) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp),
         elevation = 4.dp,
         shape = RoundedCornerShape(8.dp),
-        backgroundColor = MaterialTheme.colors.surface
+        backgroundColor = MaterialTheme.colors.surface,
+        onClick = {
+            onClickCharacter(character)
+        }
     ) {
         Row(
             modifier = Modifier
@@ -129,6 +137,8 @@ fun CharacterItemPreview() {
             type = "",
             url = "https://rickandmortyapi.com/api/character/1"
         )
-    )
+    ) {
+
+    }
 }
 
