@@ -70,6 +70,9 @@ android {
             dimension = "version"
         }
     }
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {
