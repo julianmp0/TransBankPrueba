@@ -3,7 +3,6 @@ package com.imagemaker.transbank.ui.character
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
@@ -18,7 +17,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.imagemaker.transbank.model.models.CharacterModel
+import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.items
 import com.imagemaker.transbank.model.models.Result
 import com.imagemaker.transbank.ui.theme.shimmerHighLight
 import com.skydoves.landscapist.ShimmerParams
@@ -26,17 +26,18 @@ import com.skydoves.landscapist.coil.CoilImage
 
 @Composable
 fun HomeCharacters(
-    modifier: Modifier, characters: CharacterModel?
+    modifier: Modifier,
+    charactersPagingData: LazyPagingItems<Result>
 ) {
 
-    if (characters == null)
-        return
     LazyColumn(
         modifier = modifier
             .background(MaterialTheme.colors.background)
     ) {
-        items(characters.results) { character ->
-            CharacterItem(character)
+        items(charactersPagingData){ character ->
+            character?.let {
+                CharacterItem(it)
+            }
         }
     }
 

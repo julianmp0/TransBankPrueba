@@ -1,6 +1,6 @@
 ext.versions = [
     minSdk               : 21,
-    compileSdk           : 31,
+    compileSdk           : 32,
     versionCode          : 1,
     versionName          : '1.0',
 
@@ -39,5 +39,8 @@ ext.versions = [
 
     // debugging
     timberVersion        : '5.0.1',
+
+    // pagination
+    pagingCompose        : '1.0.0-alpha15'
 
 ]
