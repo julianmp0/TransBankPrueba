@@ -1,8 +1,8 @@
 ext.versions = [
     minSdk               : 21,
     compileSdk           : 32,
-    versionCode          : 1,
-    versionName          : '1.0',
+    versionCode          : 2,
+    versionName          : '1.0.1',
 
     gradleBuildTool      : '7.1.2',
     kotlin               : '1.6.10',
@@ -41,6 +41,11 @@ ext.versions = [
     timberVersion        : '5.0.1',
 
     // pagination
-    pagingCompose        : '1.0.0-alpha15'
+    pagingCompose        : '1.0.0-alpha15',
 
+    //Glide
+    glideVersion         : '4.13.0',
+
+    //PayButton POS
+    paybuttonAndroidVersion : '2.66.0'
 ]

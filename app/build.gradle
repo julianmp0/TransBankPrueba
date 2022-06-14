@@ -52,6 +52,9 @@ android {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
+        exclude 'META-INF/*'
+        exclude 'LICENSE.txt'
+        exclude 'asm-license.txt'
     }
     flavorDimensions += "version"
     productFlavors {
@@ -131,6 +134,10 @@ dependencies {
     implementation "androidx.paging:paging-compose:$versions.pagingCompose"
 
     //Glide
-    implementation 'com.github.bumptech.glide:glide:4.13.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
+    implementation "com.github.bumptech.glide:glide:$versions.glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$versions.glideVersion"
+
+    //Payworks
+    implementation "io.payworks:paybutton-android:$versions.paybuttonAndroidVersion"
+    implementation 'io.payworks:mpos.android.accessories.pax:2.66.0'
 }
