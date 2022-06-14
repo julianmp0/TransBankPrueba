@@ -20,6 +20,7 @@ import com.imagemaker.transbank.model.repository.CharacterRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
@@ -38,8 +39,8 @@ class MainViewModel @Inject constructor(
                 CharacterPaginationSource(characterRepository)
             }.flow.cachedIn(viewModelScope)
         }else{
-            val initialData: PagingData<Result> = PagingData.from(emptyList())
-            flowOf(initialData)
+            val charactersLocal = characterRepository.loadLocalCharacters()
+            flowOf(charactersLocal)
         }
     }
 
@@ -64,12 +65,16 @@ class MainViewModel @Inject constructor(
                 val activeNetwork = cm.activeNetworkInfo
                 if (activeNetwork != null) {
                     // connected to the internet
-                    if (activeNetwork.type == ConnectivityManager.TYPE_WIFI) {
-                        result = true
-                    } else if (activeNetwork.type == ConnectivityManager.TYPE_MOBILE) {
-                        result = true
-                    } else if (activeNetwork.type == ConnectivityManager.TYPE_VPN) {
-                        result = true
+                    when (activeNetwork.type) {
+                        ConnectivityManager.TYPE_WIFI -> {
+                            result = true
+                        }
+                        ConnectivityManager.TYPE_MOBILE -> {
+                            result = true
+                        }
+                        ConnectivityManager.TYPE_VPN -> {
+                            result = true
+                        }
                     }
                 }
             }

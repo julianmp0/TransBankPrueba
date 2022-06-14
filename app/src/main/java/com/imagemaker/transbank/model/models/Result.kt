@@ -4,7 +4,6 @@ import java.io.Serializable
 
 data class Result(
     val created: String,
-    val episode: List<String>,
     val gender: String,
     val id: Int,
     val image: String,

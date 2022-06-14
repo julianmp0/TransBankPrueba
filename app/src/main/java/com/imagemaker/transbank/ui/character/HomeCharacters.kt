@@ -125,7 +125,6 @@ fun CharacterItemPreview() {
     CharacterItem(
         Result(
             created = "2017-11-04T18:48:46.250Z",
-            episode = emptyList(),
             gender = "Male",
             id = 1,
             image = "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
