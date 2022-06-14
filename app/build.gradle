@@ -68,6 +68,8 @@ android {
         }
         create("prod") {
             dimension = "version"
+
+            buildConfigField "String", "URL_RICK_AND_MORTY_API", "\"https://rickandmortyapi.com/api/\""
         }
     }
     viewBinding {
